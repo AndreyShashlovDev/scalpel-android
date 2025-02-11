@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="base.api.cert.open.key.sha256">vVNHqCllsSv49tAzDOTfEZmqohQngG+5axzyPoXr51g=</string>
+    <string name="base.api.host">trade-scalpel.com</string>
+</resources>

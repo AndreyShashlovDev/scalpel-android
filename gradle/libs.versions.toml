@@ -1,0 +1,125 @@
+[versions]
+# Android & Kotlin core
+agp = "8.8.0"  # Более стабильная версия AGP
+kotlin = "2.0.0"
+coreKtx = "1.15.0"  # Последняя стабильная версия
+coroutines = "1.10.1"
+
+# Testing
+junit = "4.13.2"
+junit-ext = "1.2.1"  # Переименовано для ясности
+espresso = "3.6.1"
+
+# AndroidX & Compose
+lifecycle = "2.8.7"  # Актуальная версия
+activity-compose = "1.10.0"
+compose-bom = "2025.01.01"
+appcompat = "1.7.0"
+navigation = "2.8.0" # reown require this version
+
+# Accompanist
+accompanist = "0.34.0"  # Совместимая версия с текущим Compose
+
+# DI
+hilt = "2.55"  # Стабильная версия
+hilt-navigation = "1.2.0"
+
+# Serialization & Network
+kotlin-serialization = "1.6.3"
+retrofit = "2.11.0"
+okhttp = "4.12.0"
+retrofit-serialization = "1.0.0"
+
+# Reown (ваши внутренние библиотеки)
+reown-bom = "1.1.2"
+reown-core = "1.1.2"
+reown-appkit = "1.1.2"
+
+ksp = "2.0.0-1.0.24"
+
+[libraries]
+# AndroidX Core
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit-ext" }
+androidx-espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+
+# Lifecycle
+androidx-lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+
+# Compose
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
+androidx-compose-material = { group = "androidx.compose.material", name = "material" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+
+# Navigation
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+
+# Accompanist
+accompanist-navigation = { group = "com.google.accompanist", name = "accompanist-navigation-material", version.ref = "accompanist" }
+
+# Other AndroidX
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+
+# Reown
+reown-bom = { group = "com.reown", name = "android-bom", version.ref = "reown-bom" }
+reown-core = { group = "com.reown", name = "android-core", version.ref = "reown-core" }
+reown-appkit = { group = "com.reown", name = "appkit", version.ref = "reown-appkit" }
+
+# Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation" }
+hilt-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
+
+# Serialization
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlin-serialization" }
+
+# Network
+retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit-serialization" }
+okhttp-core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+[bundles]
+network = [
+    "retrofit-core",
+    "retrofit-kotlin-serialization",
+    "okhttp-core",
+    "okhttp-logging",
+    "kotlinx-serialization-json",
+]
+
+compose-core = [
+    "androidx-compose-runtime",
+    "androidx-compose-ui",
+    "androidx-compose-ui-graphics",
+    "androidx-compose-material3",
+    "androidx-compose-ui-tooling-preview",
+]
+
+compose-debug = [
+    "androidx-compose-ui-tooling",
+    "androidx-compose-ui-test-manifest",
+]
