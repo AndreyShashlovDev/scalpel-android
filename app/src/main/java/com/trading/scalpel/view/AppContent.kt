@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material.ModalBottomSheetValue
 import androidx.compose.material.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -14,10 +15,12 @@ import com.google.accompanist.navigation.material.ExperimentalMaterialNavigation
 import com.google.accompanist.navigation.material.ModalBottomSheetLayout
 import com.trading.core.domain.router.AppRoute
 import com.trading.core.router.AppNavigationRegistry
+import com.trading.scalpel.presentation.SplashPresenter
 
 @Composable
 fun AppContent(
     navigationRegistries: Set<AppNavigationRegistry>,
+    startupPresenter: SplashPresenter,
     modifier: Modifier = Modifier,
 ) {
 
@@ -28,13 +31,17 @@ fun AppContent(
     val bottomSheetNavigator = BottomSheetNavigator(sheetState)
     val navController = rememberNavController(bottomSheetNavigator)
 
+    LaunchedEffect(Unit) {
+        startupPresenter.determineStartDestination()
+    }
+
     ModalBottomSheetLayout(
         bottomSheetNavigator = bottomSheetNavigator,
         modifier = Modifier.navigationBarsPadding(),
     ) {
         NavHost(
             navController = navController,
-            startDestination = AppRoute.Login.route,
+            startDestination = AppRoute.Splash.route,
             modifier = modifier
         ) {
             navigationRegistries.forEach { registry ->

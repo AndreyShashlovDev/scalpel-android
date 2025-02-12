@@ -1,10 +1,10 @@
-package com.trading.feature_login.router
+package com.trading.scalpel.router
 
 import com.trading.core.domain.router.AppRoute
 import com.trading.core.router.AbstractBaseRouter
 import javax.inject.Inject
 
-class LoginRouterImpl @Inject constructor() : AbstractBaseRouter(), LoginRouter {
+class SplashRouterImpl @Inject constructor() : AbstractBaseRouter(), SplashRouter {
 
     override fun navigateToOrders() {
         navController?.navigate(AppRoute.Orders.route) {
@@ -12,9 +12,9 @@ class LoginRouterImpl @Inject constructor() : AbstractBaseRouter(), LoginRouter 
         }
     }
 
-    override fun navigateToDemo() {
-        navController?.navigate(AppRoute.Demo.route) {
-            popUpTo(AppRoute.Login.route) { inclusive = true }
+    override fun navigateToLogin() {
+        navController?.navigate(AppRoute.Login.route) {
+            popUpTo(0) { inclusive = true }
         }
     }
 }

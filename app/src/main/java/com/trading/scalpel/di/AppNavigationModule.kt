@@ -4,6 +4,7 @@ import com.trading.core.router.AppNavigationRegistry
 import com.trading.core.view.walletconnect.WalletConnectRegistry
 import com.trading.feature_login.router.LoginRouterRegistry
 import com.trading.feature_orders.router.OrdersRouterRegistry
+import com.trading.scalpel.router.SplashRouterRegistry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +15,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppNavigationModule {
+
+    @Provides
+    @IntoSet
+    @JvmSuppressWildcards
+    fun provideSplashNavigationRegistry(
+        registry: SplashRouterRegistry,
+    ): AppNavigationRegistry = registry
 
     @Provides
     @IntoSet

@@ -1,6 +1,7 @@
 package com.trading.core.domain.router
 
 sealed class AppRoute(val route: String) {
+    data object Splash : AppRoute("splash")
     data object Login : AppRoute("login")
     data object Orders : AppRoute("orders")
     data object Demo : AppRoute("demo")
