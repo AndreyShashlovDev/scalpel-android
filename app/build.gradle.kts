@@ -54,6 +54,7 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":feature-login"))
+    implementation(project(":feature-orders"))
 
     implementation(libs.accompanist.navigation)
 

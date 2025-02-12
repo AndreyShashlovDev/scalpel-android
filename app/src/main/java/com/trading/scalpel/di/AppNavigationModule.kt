@@ -1,8 +1,9 @@
 package com.trading.scalpel.di
 
 import com.trading.core.router.AppNavigationRegistry
-import com.trading.core.services.walletconnect.presentation.WalletConnectRegistry
-import com.trading.feature_login.domain.router.LoginRouterRegistry
+import com.trading.core.view.walletconnect.WalletConnectRegistry
+import com.trading.feature_login.router.LoginRouterRegistry
+import com.trading.feature_orders.router.OrdersRouterRegistry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,13 +22,19 @@ object AppNavigationModule {
         registry: LoginRouterRegistry,
     ): AppNavigationRegistry = registry
 
-
     @Singleton
     @Provides
     @IntoSet
     @JvmSuppressWildcards
     fun provideWalletConnectRegistry(
         registry: WalletConnectRegistry,
+    ): AppNavigationRegistry = registry
+
+    @Provides
+    @IntoSet
+    @JvmSuppressWildcards
+    fun provideOrdersNavigationRegistry(
+        registry: OrdersRouterRegistry,
     ): AppNavigationRegistry = registry
 
 //    @Provides

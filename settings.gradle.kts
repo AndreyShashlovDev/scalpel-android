@@ -24,3 +24,4 @@ rootProject.name = "Scalpel"
 include(":app")
 include(":core")
 include(":feature-login")
+include(":feature-orders")

@@ -1,9 +1,9 @@
 package com.trading.feature_login.data.repository
 
-import com.trading.core.services.data.network.model.ApiResult
-import com.trading.core.services.data.network.utils.ApiErrorResolver
-import com.trading.core.services.data.network.utils.safeApiCall
-import com.trading.feature_login.data.api.AuthApiService
+import com.trading.core.domain.network.model.ApiResult
+import com.trading.core.domain.network.apiErrorResolver
+import com.trading.core.domain.network.safeApiCall
+import com.trading.feature_login.data.api.auth.AuthApiService
 import com.trading.feature_login.data.mapper.AuthMapper
 import com.trading.feature_login.domain.repository.auth.AuthRepository
 import com.trading.feature_login.domain.repository.auth.model.AuthRequest
@@ -18,7 +18,7 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun getSignMessage(): ApiResult<String> {
         return safeApiCall({ apiService.getSignMessage() },
-                           errorResolver = { ApiErrorResolver(it) },
+                           errorResolver = { apiErrorResolver(it) },
                            transform = { it.data!! })
     }
 
@@ -27,7 +27,7 @@ class AuthRepositoryImpl @Inject constructor(
 
         return safeApiCall(
             { apiService.createAuthToken(dto) },
-            errorResolver = { ApiErrorResolver(it) },
+            errorResolver = { apiErrorResolver(it) },
             transform = { it.data!! }
         )
     }
