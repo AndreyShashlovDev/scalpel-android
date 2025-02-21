@@ -6,3 +6,18 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
 }
+
+subprojects {
+    plugins.withId("com.android.library") {
+        extensions.configure<com.android.build.gradle.LibraryExtension> {
+            packaging {
+                resources {
+                    pickFirsts.add("META-INF/versions/9/OSGI-INF/MANIFEST.MF")
+                    pickFirsts.add("META-INF/MANIFEST.MF")
+                    pickFirsts.add("META-INF/*.version")
+                    pickFirsts.add("META-INF/versions/**")
+                }
+            }
+        }
+    }
+}

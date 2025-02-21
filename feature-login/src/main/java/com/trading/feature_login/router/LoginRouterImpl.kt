@@ -7,7 +7,7 @@ import javax.inject.Inject
 class LoginRouterImpl @Inject constructor() : AbstractBaseRouter(), LoginRouter {
 
     override fun navigateToOrders() {
-        navController?.navigate(AppRoute.Orders.route) {
+        navController?.navigate(AppRoute.Strategies.route) {
             popUpTo(0) { inclusive = true }
         }
     }

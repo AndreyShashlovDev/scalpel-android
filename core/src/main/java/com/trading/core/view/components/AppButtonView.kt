@@ -25,21 +25,17 @@ fun AppButtonView(
         enabled = enabled,
         modifier = modifier
             .widthIn(
-                min = 80.dp,
-                max = 300.dp
+                min = 80.dp, max = 300.dp
             )
             .fillMaxWidth()
-            .heightIn(min =36.dp, max = 48.dp),
+            .heightIn(min = 36.dp, max = 48.dp),
         shape = RoundedCornerShape(12.dp),
         border = BorderStroke(
-            1.dp,
-            MaterialTheme.colorScheme.primary
+            1.dp, MaterialTheme.colorScheme.primary
         )
     ) {
         Text(
-            text = text,
-            style = MaterialTheme.typography.bodyMedium,
-            textAlign = TextAlign.Center
+            text = text, style = MaterialTheme.typography.bodyMedium, textAlign = TextAlign.Center
         )
     }
 }

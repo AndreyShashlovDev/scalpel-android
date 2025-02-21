@@ -16,16 +16,10 @@ fun AppSingleLineView(
     overflow: TextOverflow = TextOverflow.Ellipsis,
 ) {
     Text(
-        text = text,
-        style = when (size) {
+        text = text, style = when (size) {
             ComponentSize.SMALL -> MaterialTheme.typography.bodySmall
             ComponentSize.LARGE -> MaterialTheme.typography.bodyLarge
             ComponentSize.MEDIUM -> MaterialTheme.typography.bodyMedium
-        },
-        maxLines = 1,
-        overflow = overflow,
-        color = color,
-        softWrap = false,
-        modifier = modifier
+        }, maxLines = 1, overflow = overflow, color = color, softWrap = false, modifier = modifier
     )
 }

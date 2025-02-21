@@ -7,7 +7,7 @@ import com.trading.core.domain.walletconnect.WalletConnect
 import com.trading.core.data.walletconnect.WalletConnectImpl
 import com.trading.core.domain.walletconnect.WalletEventListener
 import com.trading.core.domain.walletconnect.signer.MessageSigner
-import com.trading.core.domain.walletconnect.signer.MessageSignerImpl
+import com.trading.core.data.walletconnect.signer.MessageSignerImpl
 import com.trading.core.view.walletconnect.WalletConnectRegistry
 import dagger.Module
 import dagger.Provides

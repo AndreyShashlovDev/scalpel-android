@@ -2,7 +2,7 @@ package com.trading.feature_login.domain.interactor
 
 import android.util.Log
 import com.trading.core.domain.auth.TokenProviderNotifier
-import com.trading.core.domain.network.model.ApiResult
+import com.trading.core.domain.network.model.reponse.ApiResult
 import com.trading.core.domain.walletconnect.signer.MessageSigner
 import com.trading.core.utility.architecture.NoParamsInteractor
 import com.trading.feature_login.domain.repository.auth.AuthRepository

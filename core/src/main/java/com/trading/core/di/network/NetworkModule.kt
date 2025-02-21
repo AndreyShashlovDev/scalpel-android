@@ -1,19 +1,26 @@
 package com.trading.core.di.network
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.trading.core.BuildConfig
+import com.trading.core.data.network.interceptors.ApiErrorInterceptor
 import com.trading.core.data.network.interceptors.AuthInterceptor
 import com.trading.core.data.network.security.SslTrustManager
+import com.trading.core.domain.network.ApiErrorNotifier
+import com.trading.core.domain.network.serializer.DateSerializer
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import java.util.Date
 import java.util.concurrent.TimeUnit
 import javax.inject.Qualifier
 import javax.inject.Singleton
@@ -32,6 +39,9 @@ object DataNetworkModule {
         ignoreUnknownKeys = true
         coerceInputValues = true
         encodeDefaults = true
+        serializersModule = SerializersModule {
+            contextual(Date::class, DateSerializer)
+        }
     }
 
 
@@ -41,10 +51,12 @@ object DataNetworkModule {
         application: Application,
         authInterceptor: AuthInterceptor,
         loggingInterceptor: HttpLoggingInterceptor,
+        apiErrorInterceptor: ApiErrorInterceptor,
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .addInterceptor(authInterceptor)
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(apiErrorInterceptor)
             .connectTimeout(
                 30, TimeUnit.SECONDS
             )
@@ -56,6 +68,18 @@ object DataNetworkModule {
             )
         return SslTrustManager(application.applicationContext).applyTrustManager(builder)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiErrorInterceptor(
+        apiErrorNotifier: ApiErrorNotifier,
+        app: Application,
+    ): ApiErrorInterceptor {
+        return ApiErrorInterceptor(
+            apiErrorNotifier,
+            app.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        )
     }
 
     @Provides

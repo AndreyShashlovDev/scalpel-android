@@ -13,8 +13,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.trading.core.BuildConfig
+import com.trading.core.domain.evm.Address
 import com.trading.core.view.components.AddressView
 import com.trading.core.view.components.AppButtonView
 import com.trading.core.view.components.AppLoadingView
@@ -24,7 +27,7 @@ import com.trading.core.view.components.ComponentSize
 import com.trading.core.view.components.PageLayoutView
 import com.trading.core.view.preview.CompletePreview
 import com.trading.core.view.theme.ScalpelTheme
-import com.trading.core.utility.evm.Address
+import com.trading.feature_login.R
 import com.trading.feature_login.presentation.LoginPresenter
 import com.trading.feature_login.presentation.model.LoginPageStatus
 import com.trading.feature_login.presentation.model.LoginState
@@ -64,8 +67,7 @@ private fun LoginContent(
     ) {
         Spacer(modifier = Modifier.height(48.dp))
         AppTitleView(
-            text = "Scalpel",
-            size = ComponentSize.LARGE
+            text = BuildConfig.APP_NAME, size = ComponentSize.LARGE
         )
 
         MainContentView(state = state,
@@ -75,7 +77,7 @@ private fun LoginContent(
     }
 }
 
-@Composable()
+@Composable
 private fun MainContentView(
     state: LoginState = LoginState(),
     onConnectClick: () -> Unit,
@@ -85,15 +87,14 @@ private fun MainContentView(
     Column(
         modifier = Modifier
             .heightIn(
-                min = 460.dp,
-                max = 460.dp
+                min = 460.dp, max = 460.dp
             )
             .padding(32.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
         AppSingleLineView(
-            text = "Authorization",
+            text = stringResource(R.string.login_page_title),
             color = MaterialTheme.colorScheme.primary,
             size = ComponentSize.LARGE
         )
@@ -102,10 +103,12 @@ private fun MainContentView(
 
         if (state.status is LoginPageStatus.WalletInitialization || state.status is LoginPageStatus.Authorization) {
             AppSingleLineView(
-                text = when (state.status) {
-                    is LoginPageStatus.WalletInitialization -> "Wallet initialization..."
-                    else -> "Authorization"
-                }
+                text = stringResource(
+                    when (state.status) {
+                        is LoginPageStatus.WalletInitialization -> R.string.login_wallet_state_initialization
+                        else -> R.string.login_page_title
+                    }
+                )
             )
             AppLoadingView()
 
@@ -134,18 +137,17 @@ private fun LoginButtonsSection(
 
         walletAddress?.let {
             AddressView(
-                address = it,
-                size = ComponentSize.MEDIUM
+                address = it, size = ComponentSize.MEDIUM
             )
         }
 
         AppButtonView(
-            text = if (walletAddress != null) "Disconnect" else "Connect wallet",
+            text = stringResource(if (walletAddress != null) R.string.login_btn_wallet_disconnect else R.string.login_btn_wallet_connect),
             onClick = onConnectClick
         )
 
         AppButtonView(
-            text = "Login",
+            text = stringResource(R.string.login_btn_login),
             onClick = onLoginClick,
             enabled = walletAddress != null,
         )
@@ -153,14 +155,13 @@ private fun LoginButtonsSection(
         Spacer(modifier = Modifier.height(16.dp))
 
         AppButtonView(
-            text = "Demo",
-            onClick = onDemoClick
+            text = stringResource(R.string.login_btn_demo), onClick = onDemoClick
         )
     }
 }
 
-@Composable()
-@CompletePreview()
+@Composable
+@CompletePreview
 private fun PagePreview(
     state: LoginState = LoginState(
         status = LoginPageStatus.WalletNotConnected
@@ -168,10 +169,7 @@ private fun PagePreview(
 ) {
     ScalpelTheme {
         PageLayoutView {
-            LoginContent(state = state,
-                         onConnectClick = {},
-                         onLoginClick = {},
-                         onDemoClick = {})
+            LoginContent(state = state, onConnectClick = {}, onLoginClick = {}, onDemoClick = {})
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.trading.feature_login.domain.repository.auth.model
 
-import com.trading.core.utility.evm.Address
+import com.trading.core.domain.evm.Address
 
 class AuthRequest(
     val address: Address,

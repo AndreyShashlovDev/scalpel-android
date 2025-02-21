@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login.wallet.state.initialization">Wallet initialization…</string>
+    <string name="login.page.title">Authorization</string>
+    <string name="login.btn.login">Login</string>
+    <string name="login.btn.wallet.connect">Connect wallet</string>
+    <string name="login.btn.wallet.disconnect">Disconnect…</string>
+    <string name="login.btn.demo">Demo</string>
+</resources>

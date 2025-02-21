@@ -1,6 +1,6 @@
 package com.trading.core.domain.walletconnect
 
-import com.trading.core.utility.evm.Address
+import com.trading.core.domain.evm.Address
 import kotlinx.coroutines.flow.Flow
 
 interface Wallet {

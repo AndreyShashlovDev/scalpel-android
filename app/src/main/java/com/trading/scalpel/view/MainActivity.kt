@@ -6,7 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.trading.core.router.AppNavigationRegistry
 import com.trading.core.view.theme.ScalpelTheme
-import com.trading.scalpel.presentation.SplashPresenter
+import com.trading.scalpel.presentation.MainAppPresenter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
     lateinit var navigationRegistries: Set<AppNavigationRegistry>
 
     @Inject
-    lateinit var splashPresenter: SplashPresenter
+    lateinit var presenter: MainAppPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
             setContent {
                 ScalpelTheme(darkTheme = true) {
                     AppContent(
-                        navigationRegistries, splashPresenter
+                        navigationRegistries, presenter
                     )
                 }
             }

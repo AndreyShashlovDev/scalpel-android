@@ -1,6 +1,6 @@
 package com.trading.feature_login.data.api.auth
 
-import com.trading.core.domain.network.model.ApiResponse
+import com.trading.core.domain.network.model.reponse.ApiResponse
 import com.trading.feature_login.data.model.AuthRequestDto
 import retrofit2.http.Body
 import retrofit2.http.GET

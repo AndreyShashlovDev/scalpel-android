@@ -15,12 +15,12 @@ import com.google.accompanist.navigation.material.ExperimentalMaterialNavigation
 import com.google.accompanist.navigation.material.ModalBottomSheetLayout
 import com.trading.core.domain.router.AppRoute
 import com.trading.core.router.AppNavigationRegistry
-import com.trading.scalpel.presentation.SplashPresenter
+import com.trading.scalpel.presentation.MainAppPresenter
 
 @Composable
 fun AppContent(
     navigationRegistries: Set<AppNavigationRegistry>,
-    startupPresenter: SplashPresenter,
+    startupPresenter: MainAppPresenter,
     modifier: Modifier = Modifier,
 ) {
 

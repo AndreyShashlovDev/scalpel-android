@@ -1,6 +1,6 @@
 package com.trading.feature_login.presentation.model
 
-import com.trading.core.utility.evm.Address
+import com.trading.core.domain.evm.Address
 
 sealed class LoginPageStatus {
     data object WalletInitialization : LoginPageStatus()

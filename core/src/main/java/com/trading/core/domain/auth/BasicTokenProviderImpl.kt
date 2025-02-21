@@ -1,12 +1,14 @@
 package com.trading.core.domain.auth
 
+import com.trading.core.domain.network.ApiErrorNotifier
+import com.trading.core.domain.network.model.error.ApiError
 import com.trading.core.domain.storage.Storage
 import com.trading.core.domain.storage.StorageKey
 import com.trading.core.domain.storage.StorageResult
 import com.trading.core.domain.walletconnect.Wallet
 import com.trading.core.domain.walletconnect.WalletConnect
 import com.trading.core.domain.walletconnect.WalletState
-import com.trading.core.utility.IOScope
+import com.trading.core.utility.AppScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,6 +22,7 @@ import javax.inject.Singleton
 class BasicTokenProviderImpl @Inject constructor(
     private val storage: Storage,
     private val walletConnect: WalletConnect<Wallet>,
+    private val errorNotifier: ApiErrorNotifier,
 ) : TokenProvider, TokenProviderNotifier {
 
     private val tokenStateFlow = MutableStateFlow<String?>(null)
@@ -30,7 +33,7 @@ class BasicTokenProviderImpl @Inject constructor(
     private var initialized: Boolean = false
 
     init {
-        IOScope.launch {
+        AppScope.io.launch {
             try {
                 walletConnect.observe()
                     .collect { state ->
@@ -40,6 +43,14 @@ class BasicTokenProviderImpl @Inject constructor(
                     }
             } catch (e: Exception) {
                 println(e)
+            }
+        }
+
+        AppScope.io.launch {
+            errorNotifier.errors.collect { error ->
+                if (error is ApiError.Unauthorized && tokenStateFlow.value != null) {
+                    updateToken(null)
+                }
             }
         }
     }

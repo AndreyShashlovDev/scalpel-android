@@ -2,8 +2,8 @@ package com.trading.core.view.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.style.TextOverflow
+import com.trading.core.domain.evm.Address
 import com.trading.core.view.theme.Blue
-import com.trading.core.utility.evm.Address
 
 @Composable
 fun AddressView(

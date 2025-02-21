@@ -6,11 +6,11 @@ import com.trading.core.domain.router.AppRoute
 import com.trading.core.domain.router.RouterAnimation
 import com.trading.core.router.AppNavigationRegistry
 import com.trading.core.router.composableWithAnimation
-import com.trading.scalpel.view.SplashPage
+import com.trading.scalpel.view.splash.SplashPage
 import javax.inject.Inject
 
 class SplashRouterRegistry @Inject constructor(
-    private val router: SplashRouter,
+    private val router: MainAppRouter,
 ) : AppNavigationRegistry {
 
     override fun NavGraphBuilder.registerGraph(navController: NavHostController) {

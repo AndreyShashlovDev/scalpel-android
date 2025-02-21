@@ -1,6 +1,6 @@
 package com.trading.feature_login.domain.repository.auth
 
-import com.trading.core.domain.network.model.ApiResult
+import com.trading.core.domain.network.model.reponse.ApiResult
 import com.trading.feature_login.domain.repository.auth.model.AuthRequest
 
 interface AuthRepository {

@@ -9,6 +9,7 @@ import com.reown.appkit.client.Modal
 import com.reown.appkit.presets.AppKitChainsPresets
 import com.reown.appkit.ui.openAppKit
 import com.trading.core.BuildConfig
+import com.trading.core.domain.evm.Address
 import com.trading.core.domain.storage.Storage
 import com.trading.core.domain.storage.StorageKey
 import com.trading.core.domain.storage.StorageResult
@@ -18,8 +19,7 @@ import com.trading.core.domain.walletconnect.WalletConnect
 import com.trading.core.domain.walletconnect.WalletEventListener
 import com.trading.core.domain.walletconnect.WalletResponse
 import com.trading.core.domain.walletconnect.WalletState
-import com.trading.core.utility.IOScope
-import com.trading.core.utility.evm.Address
+import com.trading.core.utility.AppScope
 import com.trading.core.utility.tag
 import com.trading.core.view.walletconnect.WalletConnectRegistry
 import kotlinx.coroutines.flow.Flow
@@ -43,7 +43,7 @@ class WalletConnectImpl(
     private val _isInitialized = MutableStateFlow(false)
 
     init {
-        IOScope.launch {
+        AppScope.io.launch {
             val savedAddressResult = storage.getValue(StorageKey.MainWalletAddress)
 
             if (savedAddressResult is StorageResult.Success) {
@@ -56,11 +56,11 @@ class WalletConnectImpl(
             }
 
             val appMetaData = Core.Model.AppMetaData(
-                name = "Scalpel",
-                description = "Scalpel trading",
+                name = BuildConfig.APP_NAME,
+                description = BuildConfig.APP_DESC,
                 url = BuildConfig.SCALPEL_HOST,
                 icons = listOf(),
-                redirect = "kotlin-dapp-wc://request",
+                redirect = BuildConfig.APP_REDIRECT_URL,
                 appLink = BuildConfig.SCALPEL_HOST,
                 linkMode = false
             )
@@ -72,19 +72,13 @@ class WalletConnectImpl(
                 metaData = appMetaData,
                 telemetryEnabled = false
             ) {
-                Timber.e(
-                    "CoreClient.initialize", it.throwable.stackTraceToString()
-                )
+                Timber.e("CoreClient.initialize", it.throwable.stackTraceToString())
             }
 
             AppKit.initialize(Modal.Params.Init(core = CoreClient), onSuccess = {
-                Timber.d(
-                    "AppKit.initialize", "SUccess"
-                )
+                Timber.d("AppKit.initialize", "Success")
             }, onError = { error ->
-                Timber.e(
-                    "AppKit.initialize", error.throwable.stackTraceToString()
-                )
+                Timber.e("AppKit.initialize", error.throwable.stackTraceToString())
             })
 
             AppKit.setChains(AppKitChainsPresets.ethChains.values.toList())
@@ -101,7 +95,7 @@ class WalletConnectImpl(
     override fun isInitialized(): Flow<Boolean> = _isInitialized.asStateFlow()
 
     private fun checkAccountWallet() {
-        IOScope.launch {
+        AppScope.io.launch {
             val acc = AppKit.getAccount()
             val address = Address.from(acc?.address)
             val wallet = if (address == null) null else SimpleEvmWallet(address)
@@ -203,7 +197,7 @@ class WalletConnectImpl(
 
         val wallet = _walletState.value.wallet ?: return
 
-        IOScope.launch {
+        AppScope.io.launch {
             _walletResponse.emit(
                 when (result) {
                     is Modal.Model.JsonRpcResponse.JsonRpcError -> WalletResponse.Error(

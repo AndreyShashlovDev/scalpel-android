@@ -24,8 +24,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
@@ -54,7 +53,7 @@ android {
 dependencies {
     implementation(project(":core"))
     implementation(project(":feature-login"))
-    implementation(project(":feature-orders"))
+    implementation(project(":feature-strategies"))
 
     implementation(libs.accompanist.navigation)
 
@@ -73,6 +72,7 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
 
     // Testing

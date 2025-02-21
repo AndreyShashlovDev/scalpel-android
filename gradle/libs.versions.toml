@@ -1,27 +1,27 @@
 [versions]
 # Android & Kotlin core
-agp = "8.8.0"  # Более стабильная версия AGP
+agp = "8.8.0"
 kotlin = "2.0.0"
-coreKtx = "1.15.0"  # Последняя стабильная версия
+coreKtx = "1.15.0"
 coroutines = "1.10.1"
 
 # Testing
 junit = "4.13.2"
-junit-ext = "1.2.1"  # Переименовано для ясности
+junit-ext = "1.2.1"
 espresso = "3.6.1"
 
 # AndroidX & Compose
-lifecycle = "2.8.7"  # Актуальная версия
+lifecycle = "2.8.7"
 activity-compose = "1.10.0"
 compose-bom = "2025.01.01"
 appcompat = "1.7.0"
 navigation = "2.8.0" # reown require this version
 
 # Accompanist
-accompanist = "0.34.0"  # Совместимая версия с текущим Compose
+accompanist = "0.34.0"
 
 # DI
-hilt = "2.55"  # Стабильная версия
+hilt = "2.55"
 hilt-navigation = "1.2.0"
 
 # Serialization & Network
@@ -30,13 +30,13 @@ retrofit = "2.11.0"
 okhttp = "4.12.0"
 retrofit-serialization = "1.0.0"
 
-# Reown (ваши внутренние библиотеки)
+# Reown
 reown-bom = "1.1.2"
 reown-core = "1.1.2"
 reown-appkit = "1.1.2"
 
 ksp = "2.0.0-1.0.24"
-material = "1.12.0"
+coil = "2.6.0"
 
 [libraries]
 # AndroidX Core
@@ -93,7 +93,7 @@ retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.r
 retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit-serialization" }
 okhttp-core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -119,6 +119,7 @@ compose-core = [
     "androidx-compose-ui-graphics",
     "androidx-compose-material3",
     "androidx-compose-ui-tooling-preview",
+    "coil-compose",
 ]
 
 compose-debug = [

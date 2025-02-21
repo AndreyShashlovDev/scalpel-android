@@ -25,22 +25,14 @@ fun AppTitleView(
 
     Box(modifier = Modifier) {
         Text(
-            text = text,
-            color = Gold, //
-            modifier = Modifier.offset(y = 5.dp),
-            style = style.copy(
+            text = text, color = Gold, //
+            modifier = Modifier.offset(y = 5.dp), style = style.copy(
                 shadow = Shadow(
                     color = Color(
-                        249f,
-                        164f,
-                        0f,
-                        0.6f
-                    ),
-                    offset = Offset(
-                        0f,
-                        15f
-                    ),
-                    blurRadius = 15f
+                        249f, 164f, 0f, 0.6f
+                    ), offset = Offset(
+                        0f, 15f
+                    ), blurRadius = 15f
                 )
             )
         )

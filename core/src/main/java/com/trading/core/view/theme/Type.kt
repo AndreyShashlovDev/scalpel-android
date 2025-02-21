@@ -45,8 +45,8 @@ val Typography = Typography(
     titleSmall = TextStyle(
         fontFamily = RussoOne,
         fontWeight = FontWeight.Bold,
-        fontSize = 32.sp,
-        lineHeight = 32.sp,
+        fontSize = 22.sp,
+        lineHeight = 22.sp,
     ),
     titleMedium = TextStyle(
         fontFamily = RussoOne,

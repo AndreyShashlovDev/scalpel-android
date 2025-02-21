@@ -18,20 +18,32 @@ android {
 
         buildConfigField(
             "String",
-            "REOWN_PROJECT_ID",
-            "\"882d3398012401b6a598b7a245adff21\""
+            "APP_NAME",
+            "\"Scalpel\""
         )
 
         buildConfigField(
             "String",
-            "SCALPEL_HOST",
-            "\"https://trade-scalpel.com\""
+            "APP_DESC",
+            "\"Scalpel trading\""
         )
 
         buildConfigField(
             "String",
-            "SCALPEL_API_URL",
-            "\"https://trade-scalpel.com/api/\""
+            "APP_REDIRECT_URL",
+            "\"scalpel-wc://request\""
+        )
+
+        buildConfigField(
+            "String", "REOWN_PROJECT_ID", "\"882d3398012401b6a598b7a245adff21\""
+        )
+
+        buildConfigField(
+            "String", "SCALPEL_HOST", "\"https://trade-scalpel.com\""
+        )
+
+        buildConfigField(
+            "String", "SCALPEL_API_URL", "\"https://trade-scalpel.com/api/\""
         )
     }
 
@@ -39,8 +51,7 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             )
         }
     }
