@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="strategies.page.title">Orders</string>
+    <string name="strategies.list.is.empty">List is empty</string>
+    <string name="strategies.list.item.status">Status:</string>
+    <string name="strategies.list.item.usd.amount">Usd amount:</string>
+    <string name="strategies.list.item.current.profit">Current profit:</string>
+    <string name="strategies.list.item.earned.profit">Earned profit:</string>
 </resources>

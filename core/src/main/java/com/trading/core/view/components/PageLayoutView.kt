@@ -44,7 +44,7 @@ fun PageLayoutView(
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable()
+@Composable
 fun AppBarView(
     config: AppBarConfig
 ) {

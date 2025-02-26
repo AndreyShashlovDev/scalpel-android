@@ -1,6 +1,7 @@
 package com.trading.feature_strategies.data.mapper
 
 import com.trading.feature_strategies.data.model.CompositeStrategyResponse
+import com.trading.feature_strategies.data.model.CurrencyPriceResponse
 import com.trading.feature_strategies.data.model.CurrencyResponse
 import com.trading.feature_strategies.data.model.LogResponse
 import com.trading.feature_strategies.data.model.SimpleHistoryResponse
@@ -9,11 +10,13 @@ import com.trading.feature_strategies.data.model.StrategyResponse
 import com.trading.feature_strategies.data.model.SwapResponse
 import com.trading.feature_strategies.domain.model.CompositeStrategy
 import com.trading.feature_strategies.domain.model.Currency
+import com.trading.feature_strategies.domain.model.CurrencyPrice
 import com.trading.feature_strategies.domain.model.Log
 import com.trading.feature_strategies.domain.model.SimpleHistory
 import com.trading.feature_strategies.domain.model.Strategy
 import com.trading.feature_strategies.domain.model.StrategyOptions
 import com.trading.feature_strategies.domain.model.Swap
+import java.math.BigInteger
 
 object CompositeStrategyMapper {
     fun CompositeStrategyResponse.toDomain(): CompositeStrategy {
@@ -31,15 +34,15 @@ object CompositeStrategyMapper {
             wallet = wallet,
             currencyA = currencyA.toDomain(),
             currencyB = currencyB.toDomain(),
-            totalAmountA = totalAmountA,
-            totalAmountB = totalAmountB,
-            adaptiveUsdPrice = adaptiveUsdPrice,
+            totalAmountA = BigInteger(totalAmountA),
+            totalAmountB = BigInteger(totalAmountB),
+            adaptiveUsdPrice = if (adaptiveUsdPrice != null) BigInteger(adaptiveUsdPrice) else null,
             options = options.toDomain(),
-            initialAmountA = initialAmountA,
+            initialAmountA = BigInteger(initialAmountA),
             approvedA = approvedA,
             approvedB = approvedB,
             status = status,
-            gasLimit = gasLimit,
+            gasLimit = BigInteger(gasLimit),
             createdAt = createdAt
         )
     }
@@ -50,9 +53,9 @@ object CompositeStrategyMapper {
             chain = chain,
             currencyFrom = currencyFrom,
             currencyTo = currencyTo,
-            valueFrom = valueFrom,
-            valueTo = valueTo,
-            exchangeUsdPrice = exchangeUsdPrice,
+            valueFrom = BigInteger(valueFrom),
+            valueTo = if (valueTo != null) BigInteger(valueTo) else null,
+            exchangeUsdPrice = BigInteger(exchangeUsdPrice),
             profit = profit,
             scalpelFeeAmount = scalpelFeeAmount,
             accumulatorFeeAmount = accumulatorFeeAmount,
@@ -79,7 +82,7 @@ object CompositeStrategyMapper {
 
     private fun SimpleHistoryResponse.toDomain(): SimpleHistory {
         return SimpleHistory(
-            date = date, value = value
+            date = date, value = BigInteger(value)
         )
     }
 
@@ -91,7 +94,16 @@ object CompositeStrategyMapper {
             chain = chain,
             decimal = decimal,
             isStable = isStable,
-//            price = price?.toDomain()
+            price = price?.toDomain()
+        )
+    }
+
+    private fun CurrencyPriceResponse.toDomain(): CurrencyPrice {
+        return CurrencyPrice(
+            usdtPrice = BigInteger(usdtPrice),
+            usdtExchangePrice = BigInteger(usdtExchangePrice),
+            dex = dex,
+            createdAt = createdAt
         )
     }
 }

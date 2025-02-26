@@ -13,7 +13,7 @@ data class CurrencyResponse(
     val chain: ChainType,
     val decimal: String,
     val isStable: Boolean,
-//    val price: CurrencyPriceResponse? = null
+    val price: CurrencyPriceResponse? = null
 ) {
     fun valueTo(value: String, decimals: Int = 4): Double {
         return value.toBigDecimal()

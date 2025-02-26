@@ -2,4 +2,12 @@
 <resources>
     <string name="base.api.cert.open.key.sha256">vVNHqCllsSv49tAzDOTfEZmqohQngG+5axzyPoXr51g=</string>
     <string name="base.api.host">trade-scalpel.com</string>
+
+    <string name="strategy.status.type.created">Created</string>
+    <string name="strategy.status.type.approveinprogress">Tokens approve in progress</string>
+    <string name="strategy.status.type.inprogress">In progress</string>
+    <string name="strategy.status.type.useractionrequired">User action required</string>
+    <string name="strategy.status.type.paused">Paused</string>
+    <string name="strategy.status.type.canceled">Archived</string>
+    <string name="strategy.status.type.undefined">Unknown</string>
 </resources>

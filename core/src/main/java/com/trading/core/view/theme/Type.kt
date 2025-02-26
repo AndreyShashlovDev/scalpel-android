@@ -10,15 +10,10 @@ import androidx.compose.ui.unit.sp
 import com.trading.core.R
 
 val RussoOne = FontFamily(
-    Font(R.font.russo_one_regular),
-    Font(
-        R.font.russo_one_regular,
-        FontWeight.Bold
-    ),
-    Font(
-        R.font.russo_one_regular,
-        FontWeight.Normal,
-        FontStyle.Italic
+    Font(R.font.russo_one_regular), Font(
+        R.font.russo_one_regular, FontWeight.Bold
+    ), Font(
+        R.font.russo_one_regular, FontWeight.Normal, FontStyle.Italic
     )
 )
 
@@ -29,32 +24,27 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
         lineHeight = 14.sp,
-    ),
-    bodyMedium = TextStyle(
+    ), bodyMedium = TextStyle(
         fontFamily = RussoOne,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 16.sp,
-    ),
-    bodyLarge = TextStyle(
+    ), bodyLarge = TextStyle(
         fontFamily = RussoOne,
         fontWeight = FontWeight.Normal,
         fontSize = 24.sp,
         lineHeight = 24.sp,
-    ),
-    titleSmall = TextStyle(
+    ), titleSmall = TextStyle(
         fontFamily = RussoOne,
         fontWeight = FontWeight.Bold,
         fontSize = 22.sp,
         lineHeight = 22.sp,
-    ),
-    titleMedium = TextStyle(
+    ), titleMedium = TextStyle(
         fontFamily = RussoOne,
         fontWeight = FontWeight.Bold,
         fontSize = 48.sp,
         lineHeight = 48.sp,
-    ),
-    titleLarge = TextStyle(
+    ), titleLarge = TextStyle(
         fontFamily = RussoOne,
         fontWeight = FontWeight.Bold,
         fontSize = 56.sp,

@@ -16,22 +16,18 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        resValue("string", "app_name", "Scalpel")
+
         buildConfigField(
-            "String",
-            "APP_NAME",
-            "\"Scalpel\""
+            "String", "APP_NAME", "\"Scalpel\""
         )
 
         buildConfigField(
-            "String",
-            "APP_DESC",
-            "\"Scalpel trading\""
+            "String", "APP_DESC", "\"Scalpel trading\""
         )
 
         buildConfigField(
-            "String",
-            "APP_REDIRECT_URL",
-            "\"scalpel-wc://request\""
+            "String", "APP_REDIRECT_URL", "\"scalpel-wc://request\""
         )
 
         buildConfigField(
@@ -44,6 +40,24 @@ android {
 
         buildConfigField(
             "String", "SCALPEL_API_URL", "\"https://trade-scalpel.com/api/\""
+        )
+
+        buildConfigField(
+            "String",
+            "DATA_SOURCE_BLOCKCHAIN_IMG",
+            "\"https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/%s/info/logo.png\""
+        )
+
+        buildConfigField(
+            "String",
+            "DATA_SOURCE_TOKEN_IMG",
+            "\"https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/%s/assets/%s/logo.png\""
+        )
+
+        buildConfigField(
+            "String",
+            "DATA_SOURCE_NATIVE_COIN_IMG",
+            "\"https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/%s/info/logo.png\""
         )
     }
 
@@ -83,6 +97,9 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose.core)
+
+    // Graphics
+    implementation(libs.bundles.graphics)
 
     // Navigation & Coroutines
     implementation(libs.androidx.navigation.compose)

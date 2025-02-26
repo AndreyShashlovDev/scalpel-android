@@ -14,8 +14,10 @@ class StrategyRepositoryImpl @Inject constructor(
     private val apiService: StrategyApiService
 ) : StrategyRepository {
 
-    override suspend fun getCompositeStrategies(): ApiResult<Pageable<CompositeStrategy>> {
-        return safeApiCall({ apiService.getCompositeStrategies() },
+    override suspend fun getCompositeStrategies(
+        page: Int, limit: Int
+    ): ApiResult<Pageable<CompositeStrategy>> {
+        return safeApiCall({ apiService.getCompositeStrategies(page, limit) },
                            errorResolver = { apiErrorResolver(it) },
                            transform = { response ->
                                val pageable = response.data

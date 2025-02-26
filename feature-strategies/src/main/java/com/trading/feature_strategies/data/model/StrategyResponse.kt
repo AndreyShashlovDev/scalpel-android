@@ -1,5 +1,6 @@
 package com.trading.feature_strategies.data.model
 
+import com.trading.core.domain.evm.Address
 import com.trading.core.domain.network.model.api.ChainType
 import com.trading.core.domain.network.model.api.StrategyStatusType
 import com.trading.core.domain.network.model.api.StrategyType
@@ -12,7 +13,7 @@ data class StrategyResponse(
     val chain: ChainType,
     val type: StrategyType,
     val orderHash: String,
-    val wallet: String,
+    val wallet: Address,
     val currencyA: CurrencyResponse,
     val currencyB: CurrencyResponse,
     val totalAmountA: String,

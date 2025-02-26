@@ -19,7 +19,7 @@ import com.trading.core.view.components.PageLayoutView
 import com.trading.core.view.preview.CompletePreview
 
 @Composable
-@CompletePreview()
+@CompletePreview
 fun SplashPage() {
     PageLayoutView {
         Column(

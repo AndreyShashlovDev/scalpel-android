@@ -5,5 +5,7 @@ import com.trading.core.domain.network.model.reponse.ApiResult
 import com.trading.feature_strategies.domain.model.CompositeStrategy
 
 interface StrategyRepository {
-    suspend fun getCompositeStrategies(): ApiResult<Pageable<CompositeStrategy>>
+    suspend fun getCompositeStrategies(
+        page: Int, limit: Int
+    ): ApiResult<Pageable<CompositeStrategy>>
 }
