@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import com.trading.core.router.AppNavigationRegistry
 import com.trading.core.view.theme.ScalpelTheme
 import com.trading.scalpel.presentation.MainAppPresenter
@@ -17,8 +18,7 @@ class MainActivity : ComponentActivity() {
     @JvmSuppressWildcards
     lateinit var navigationRegistries: Set<AppNavigationRegistry>
 
-    @Inject
-    lateinit var presenter: MainAppPresenter
+    private val presenter: MainAppPresenter by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

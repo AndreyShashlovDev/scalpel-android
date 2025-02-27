@@ -6,6 +6,8 @@ abstract class AbstractBaseRouter : BaseRouter {
 
     protected var navController: NavController? = null
 
+    override fun currentRouteName(): String? = navController?.currentDestination?.route
+
     override fun setController(controller: NavController) {
         navController = controller
     }
