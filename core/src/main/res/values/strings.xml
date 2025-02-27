@@ -10,4 +10,7 @@
     <string name="strategy.status.type.paused">Paused</string>
     <string name="strategy.status.type.canceled">Archived</string>
     <string name="strategy.status.type.undefined">Unknown</string>
+
+    <string name="strategy.type.scalpel.classic">Scalpel classic</string>
+    <string name="strategy.type.undefined">Unknown</string>
 </resources>

@@ -141,10 +141,9 @@ private fun LoginButtonsSection(
             )
         }
 
-        AppButtonView(
-            text = stringResource(if (walletAddress != null) R.string.login_btn_wallet_disconnect else R.string.login_btn_wallet_connect),
-            onClick = onConnectClick
-        )
+        AppButtonView(text = stringResource(walletAddress?.let { R.string.login_btn_wallet_disconnect }
+                                                ?: R.string.login_btn_wallet_connect),
+                      onClick = onConnectClick)
 
         AppButtonView(
             text = stringResource(R.string.login_btn_login),

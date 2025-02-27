@@ -4,5 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class StrategyOptionsResponse(
-    val stopLoss: Float? = null,
+    val stopLossPercents: Float? = null,
+    val growDiffPercentsUp: Float? = null,
+    val growDiffPercentsDown: Float? = null,
+    val buyMaxPrice: String? = null,
 )

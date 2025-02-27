@@ -36,7 +36,7 @@ object CompositeStrategyMapper {
             currencyB = currencyB.toDomain(),
             totalAmountA = BigInteger(totalAmountA),
             totalAmountB = BigInteger(totalAmountB),
-            adaptiveUsdPrice = if (adaptiveUsdPrice != null) BigInteger(adaptiveUsdPrice) else null,
+            adaptiveUsdPrice = adaptiveUsdPrice?.let { BigInteger(adaptiveUsdPrice) },
             options = options.toDomain(),
             initialAmountA = BigInteger(initialAmountA),
             approvedA = approvedA,
@@ -54,7 +54,7 @@ object CompositeStrategyMapper {
             currencyFrom = currencyFrom,
             currencyTo = currencyTo,
             valueFrom = BigInteger(valueFrom),
-            valueTo = if (valueTo != null) BigInteger(valueTo) else null,
+            valueTo = valueTo?.let { BigInteger(it) },
             exchangeUsdPrice = BigInteger(exchangeUsdPrice),
             profit = profit,
             scalpelFeeAmount = scalpelFeeAmount,
@@ -68,7 +68,10 @@ object CompositeStrategyMapper {
 
     private fun StrategyOptionsResponse.toDomain(): StrategyOptions {
         return StrategyOptions(
-            stopLoss = stopLoss
+            stopLossPercents = stopLossPercents,
+            growDiffPercentsUp = growDiffPercentsUp,
+            growDiffPercentsDown = growDiffPercentsDown,
+            buyMaxPrice = buyMaxPrice?.let { BigInteger(it) },
         )
     }
 

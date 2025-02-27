@@ -7,7 +7,7 @@ import com.trading.core.domain.network.model.reponse.ApiResult
 import com.trading.core.view.components.ListState
 import com.trading.feature_strategies.domain.model.CompositeStrategy
 import com.trading.feature_strategies.domain.repository.StrategyRepository
-import com.trading.feature_strategies.presentation.mapper.CompositeStrategyUiMapper.toDomain
+import com.trading.feature_strategies.presentation.mapper.CompositeStrategyUiMapper.uiModel
 import com.trading.feature_strategies.presentation.model.StrategiesPageState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -55,7 +55,7 @@ class StrategiesPagePresenter @Inject constructor(
                     latestResponse = result.data
                     val rawList = result.data.data
 
-                    val items = _state.value.items + rawList.map { it.toDomain() }
+                    val items = _state.value.items + rawList.map { it.uiModel() }
                     val hasNext = rawList.size == PAGE_LIMIT && items.size < result.data.total
 
                     _state.update {

@@ -6,4 +6,17 @@
     <string name="strategies.list.item.usd.amount">Usd amount:</string>
     <string name="strategies.list.item.current.profit">Current profit:</string>
     <string name="strategies.list.item.earned.profit">Earned profit:</string>
+    <string name="strategies.list.item.btn.analytics">Analytics</string>
+
+    <string name="strategies.list.item.strategy.type">Strategy:</string>
+    <string name="strategies.list.item.wallet">Wallet:</string>
+    <string name="strategies.list.item.approval">Transfer approved:</string>
+    <string name="strategies.list.item.max.gas.price">Max gas price (GWEI):</string>
+    <string name="strategies.list.item.take.profit">Take profit:</string>
+    <string name="strategies.list.item.falling">Falling:</string>
+    <string name="strategies.list.item.stoploss">Stop-loss:</string>
+    <string name="strategies.list.item.max.entry.price">Max token entry price:</string>
+
+    <string name="strategies.list.item.approvedYes">Yes</string>
+    <string name="strategies.list.item.approvedNo">No</string>
 </resources>
